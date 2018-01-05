@@ -10,13 +10,15 @@
 <body>
     <p>Of Note: - As the book is written based on version 0.13 - there needs to be some change to written code</p>
     <p>As part of a later version - around version 15 of React - React was split iinto the core and the DOM - therefore you need to include react-dom, and babel lines 7 &amp; 8 of this file.</p>
-    <script>
-         var App = React.createClass({
-            render: function(){
-              return(React.createElement("div", null, "Welcome to React, Andy!"));
-            } });
-            
-          ReactDOM.render(React.createElement(App), document.body);
+    <script type="text/babel">
+        var App = React.createClass({
+            render: function() {
+                return (
+                    <div>Welcome to React, Andy!</div>
+                )
+            }
+        })
+        ReactDOM.render(<App />, document.body)
     </script>
 
 </body>
