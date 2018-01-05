@@ -13,8 +13,37 @@
     <script type="text/babel">
         var App = React.createClass({
             render: function() {
+                // Of important note - until React 16 - you can only return one node!!!
                 return (
-                    <div>Welcome to React, Andy!</div>
+                    <div>
+                        <h1>Recent Changes</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>When</th>
+                                    <th>Who</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2 minutes ago</td>
+                                    <td>Jill Dupre</td>
+                                    <td>Created new account</td>
+                                </tr>
+                                <tr>
+                                    <td>1 hour ago</td>
+                                    <td>Lose White</td>
+                                    <td>Added fist chapter</td>
+                                </tr>
+                                <tr>
+                                    <td>2 hours ago</td>
+                                    <td>Jordan Whash</td>
+                                    <td>Created new account</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 )
             }
         })
