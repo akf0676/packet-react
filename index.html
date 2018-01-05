@@ -9,10 +9,37 @@
 </head>
 <body>
     <p>Of Note: - As the book is written based on version 0.13 - there needs to be some change to written code</p>
-    <p>As part of a later version - around version 15 of React - React was split iinto the core and the DOM - therefore you need to include react-dom, and babel lines 7 &amp; 8 of this file.</p>
+    <p>As part of a later version - around version 15 of React - React was split into the core and the DOM - therefore you need to include react-dom, and babel lines 7 &amp; 8 of this file.</p>
     <script type="text/babel">
         var App = React.createClass({
             render: function() {
+                // Define Data in render method - to simulate how the table will be dynamically produced
+                var data = [{
+                        "when": "2 minutes ago",
+                        "who": "Jill Dupre",
+                        "description": "Created new account"
+                    }, {
+                        "when": "1 hour ago",
+                        "who": "Lose White",
+                        "description": "Added fist chapter"
+                    }, {
+                        "when": "2 hours ago",
+                        "who": "Jordan Whash",
+                        "description": "Created new account"
+                    }];
+                    // Loop through Data to create table rows
+                    // {} is used in JSX to embed dynamic information in our view template
+                    // However, the use of the map function does not have the  nal return value from render function
+                    // JSX allows us to arbitrarily create elements to be used in our views 
+                    // React allows us to dynamically create, use, and reuse the parts of views
+                    var rows = data.map(function(row){
+                        return  <tr>
+                                    <td>{row.when}</td>
+                                    <td>{row.who}</td>
+                                    <td>{row.description}</td>
+                                </tr>
+                    });
+                // 
                 // Of important note - until React 16 - you can only return one node!!!
                 return (
                     <div>
@@ -26,27 +53,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>2 minutes ago</td>
-                                    <td>Jill Dupre</td>
-                                    <td>Created new account</td>
-                                </tr>
-                                <tr>
-                                    <td>1 hour ago</td>
-                                    <td>Lose White</td>
-                                    <td>Added fist chapter</td>
-                                </tr>
-                                <tr>
-                                    <td>2 hours ago</td>
-                                    <td>Jordan Whash</td>
-                                    <td>Created new account</td>
-                                </tr>
+                                {rows}
                             </tbody>
                         </table>
                     </div>
                 )
             }
         })
+        // Of another note - it is typically bad practice to apply directly to the dom body - this will be udpated in the next commit
         ReactDOM.render(<App />, document.body)
     </script>
 
