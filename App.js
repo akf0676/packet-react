@@ -8,7 +8,7 @@ var RecentChangesTable = React.createClass ({
             </table>;
   }
 });
-var Title = React.createClass({
+RecentChangesTable.Title = React.createClass({
   render: function() {
     return (<h1>{this.props.title}</h1>);
   }
@@ -20,7 +20,7 @@ RecentChangesTable.Heading = React.createClass({
   }
 });
 
-var Row = React.createClass ({
+RecentChangesTable.Row = React.createClass ({
   render: function() {
     // The Row will receive a changeSet object in its props
     return (<tr key = {this.props.index}>
@@ -42,10 +42,10 @@ RecentChangesTable.Headings = React.createClass({
   }
 });
 
-var Rows = React.createClass ({
+RecentChangesTable.Rows = React.createClass ({
   render: function() {
     var rows = this.props.changeSets.map(function(changeSet, index){
-      return (<Row changeSet = {changeSet} key = {index} />);
+      return (<RecentChangesTable.Row changeSet = {changeSet} key = {index} />);
     })
     return (<tbody>{rows}</tbody>);
   } 
@@ -56,11 +56,11 @@ var App = React.createClass({
       // Of important note - until React 16 - you can only return one node!!!
       return (
         <div>
-          <Title title = {this.props.title} />
+          <RecentChangesTable.Title title = {this.props.title} />
           <RecentChangesTable>
               
                   <RecentChangesTable.Headings headings = {this.props.headings} />
-                  <Rows changeSets = {this.props.changeSets} />
+                  <RecentChangesTable.Rows changeSets = {this.props.changeSets} />
           
           </RecentChangesTable>
         </div>
