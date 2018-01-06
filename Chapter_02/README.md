@@ -18,3 +18,25 @@ JSX is not meant to be compiled at runtime.
 You can specify both HTML tags and React components in JSX.
 HTML tags start with a lowercase letter and React components start with an uppercase letter.
 JSX uses this convention to differentiate between the local component classes and HTML tags.
+
+## Multiple Components
+Based on the example in Chapter 01 - we will split this single component into small composable components.  These simple modular components will use other modular components with well-de ned self- contained interfaces.
+
+Based on the following - structure
+<table>
+    {tableHeadings}
+    {tableRows}
+</table>
+
+We could consider this Two Components - Headings and Row Components - but we can go one step further. Both headings and rows are lists of still smaller units, a Heading and a Row tag, respectively. It can be visualized as follows:
+
+<table>
+    <Headings>
+        <Heading/>
+        <Heading/>
+    </Headings>
+    <Rows >
+        <Row/>
+        <Row/>
+    </Rows>
+</table>
