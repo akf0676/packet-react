@@ -40,3 +40,24 @@ We could consider this Two Components - Headings and Row Components - but we can
         <Row/>
     </Rows>
 </table>
+
+## JavaScript Expressions (Child )
+By adding them in curly braces as children of the <tr> tag. These expressions that are used to specify the child components are called child expressions.
+
+These are simple expressions used for passing props or evaluating some JavaScript code that can be used as an attribute value. For example 
+'''
+data = {data.length > 0 ? data : ''}
+'''
+
+Anything that is present in curly braces is evaluated by JSX. It works for both children expressions as well as JavaScript expressions
+
+## JSX Comments
+'''
+{/* This is a comment */}
+or
+/* Multi
+Line
+Comment 
+You dont need to wrap in curly braces
+*/
+''''
