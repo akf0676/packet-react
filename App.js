@@ -13,7 +13,7 @@ var Title = React.createClass({
     return (<h1>{this.props.title}</h1>);
   }
 });
-var Heading = React.createClass({
+RecentChangesTable.Heading = React.createClass({
   render: function() {
     // assumption that heading will receive this as a prop
     return (<th key={this.props.index}>{this.props.heading}</th>);
@@ -32,10 +32,10 @@ var Row = React.createClass ({
   }
 });
 // Headings will get a list of titles passed to it.
-var Headings = React.createClass({
+RecentChangesTable.Headings = React.createClass({
   render: function(){
     var headings = this.props.headings.map(function(heading, index) {
-      return (<Heading heading = {heading} key = {index}/>);
+      return (<RecentChangesTable.Heading heading = {heading} key = {index}/>);
     });
 
     return (<thead><tr>{headings}</tr></thead>);
@@ -59,7 +59,7 @@ var App = React.createClass({
           <Title title = {this.props.title} />
           <RecentChangesTable>
               
-                  <Headings headings = {this.props.headings} />
+                  <RecentChangesTable.Headings headings = {this.props.headings} />
                   <Rows changeSets = {this.props.changeSets} />
           
           </RecentChangesTable>
