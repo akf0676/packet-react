@@ -72,17 +72,17 @@ by using
 ```
 this.props.children.
 ```
-React, by default, captures all the child nodes between open and close tags of a component in an array and adds it to the props of that component as this.props.children. So we can render it using {this.props. children}. We will get all Headings and Rows as this.props.children in the RecentChangesTable component. The output is the same as before, when we used the <table> tag directly
+React, by default, captures all the child nodes between open and close tags of a component in an array and adds it to the props of that component as this.props.children. So we can render it using {this.props. children}. We will get all Headings and Rows as this.props.children in the RecentChangesTable component. The output is the same as before, when we used the ```<table>``` tag directly
 
 ## Spread Attributes
 Passing probs one by one could become cumbersome. As APIs etc change it will be dificult to keep track of the structure of the incoming data and pass it accordingly in the props. We can solve this using the *spread* attributes.
 
-'''
+```
    var props = { headings: headings, changeSets: data, timestamps:
    timestamps };
    ReactDOM.render(<App {...props } />,
                         document.getElementById('container'));
-'''
+```
 
 All the properties of object are passed as props to the App component.
 The order of the attributes is important though. Newer attributes override previous ones.
@@ -91,26 +91,26 @@ The order of the attributes is important though. Newer attributes override previ
 JSX is not HTML - remember this or you will run into trouble.
 ### Examples
 If you want to pass some custom attribute that does not exist in the HTML speci cation, then React will simply ignore it.
-'''
+```
    // custom-attribute won't be rendered
    <table custom-attribute = 'super_awesome_table'>
    </table>
-'''
-"It must be passed as a data attribute so that React will render it."
- '''
+```
+It must be passed as a data attribute so that React will render it.
+```
    // data-custom-attribute will be rendered
    <table data-custom-attribute = 'super_awesome_table'>
    </table>
-'''
+```
 We may also run into some issues while rendering the HTML content dynamically. In the JSX tags, we can add a valid HTML entity directly.
-'''
+```
   // Using HTML entity inside JSX tags.
    <div> Mike &amp; Shawn </div>
    // will produce
     React.createElement("div", null, " Bob & Steve ")
-'''
+```
 But if we render it in a dynamic expression, it will then escape the ampersand.
-'''
+```
    // Using HTML entity inside dynamic expression
    var first = 'Bob';
    var second = 'Steve';
@@ -118,30 +118,30 @@ But if we render it in a dynamic expression, it will then escape the ampersand.
    var first = 'Bob';
    var second = 'Steve';
    React.createElement("div", null, " ", first + '&amp;' + second, " ")
-'''
+```
 It happens as React escapes all the strings in order to prevent XSS attacks by default. To overcome it, we can directly pass the Unicode character of &amp; or we can use arrays of strings and JSX elements.
-'''
+```
    // Using mixed arrays of JSX elements and normal variables
    <div> {[first, <span>&amp;</span>, second]} </div>
    React.createElement("div", null, " ", [first,
                                       React.createElement("span", null,
  "&"), second], " ")
- '''
+```
  as a last resort, React also allows to render raw HTML using a special dangerouslySetInnerHTML prop
- '''
+```
     // Rendering raw HTML directly
    <div dangerouslySetInnerHTML={{__html: 'Mike &amp; Shawn'}} />
-'''
+```
 
 ### Conditionals in JSX
 React embraces the idea of tying markup and logic together. We can use the power of JavaScript for loops and conditionals. But if/else logic is harder to express. Therefore, in JSX, we can't use conditional statements such as if/else - we must use a ternary operator for specifying the if/else logic.
-'''
+```
     // Using ternary operator
    <div className={ success ? 'green' : 'red' }/>
    React.createElement("div", {className:  success ? 'green' : 'red'})
-'''
+```
 With large expressions it's better to of oad the logic to a block or maybe a function
-'''
+```
     // Moving if/else logic to a function
    var showResult = function() {
      if(this.props.success === true)
@@ -149,4 +149,4 @@ With large expressions it's better to of oad the logic to a block or maybe a fun
      else
        return <ErrorComponent />
  };
- '''
+```
