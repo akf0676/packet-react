@@ -9,29 +9,23 @@
     <script type="text/babel">
         var App = React.createClass({
             render: function() {
-                
+                // Headings data passed to Render Function from the ReactDOM.render props
                 var headings = this.props.headings.map(function(heading){
                     return <th>{heading}</th>
                 });
-                    // Loop through Data to create table rows
-                    // {} is used in JSX to embed dynamic information in our view template
-                    // However, the use of the map function does not have the  nal return value from render function
-                    // JSX allows us to arbitrarily create elements to be used in our views 
-                    // React allows us to dynamically create, use, and reuse the parts of views
-                    var rows = this.props.data.map(function(row){
-                        return  <tr>
-                                    <td>{row.when}</td>
-                                    <td>{row.who}</td>
-                                    <td>{row.description}</td>
-                                </tr>
-                    });
-                // 
-                    
-                
+                // Loop through Data passed to Render Function from the ReactDOM.render props
+                var rows = this.props.data.map(function(row){
+                    return  <tr>
+                                <td>{row.when}</td>
+                                <td>{row.who}</td>
+                                <td>{row.description}</td>
+                            </tr>
+                });
+              
                 // Of important note - until React 16 - you can only return one node!!!
                 return (
                     <div>
-                        <h1>{this.props.title}</h1>
+                        <h1>{title}</h1>
                         <table>
                             <thead>
                                 <tr>
@@ -61,8 +55,8 @@
                         "description": "Created new account"
                     }];
         var headings = ["Last change at", "By Author", "Summary"];
-        
-        ReactDOM.render(<App title='Recent  Changes' headings = {headings} data = {data}/>,  document.querySelector('#App'))
+        var title = 'Recent Changes';
+        ReactDOM.render(<App title={title} headings = {headings} data = {data}/>,  document.querySelector('#App'))
     </script>
 </head>
 <body>
