@@ -10,9 +10,44 @@
         var App = React.createClass({
             render: function() {
                 
-                console.log("Output - " + this.props.title)
-                // Define Data in render method - to simulate how the table will be dynamically produced
-                var data = [{
+                var headings = this.props.headings.map(function(heading){
+                    return <th>{heading}</th>
+                });
+                    // Loop through Data to create table rows
+                    // {} is used in JSX to embed dynamic information in our view template
+                    // However, the use of the map function does not have the  nal return value from render function
+                    // JSX allows us to arbitrarily create elements to be used in our views 
+                    // React allows us to dynamically create, use, and reuse the parts of views
+                    var rows = this.props.data.map(function(row){
+                        return  <tr>
+                                    <td>{row.when}</td>
+                                    <td>{row.who}</td>
+                                    <td>{row.description}</td>
+                                </tr>
+                    });
+                // 
+                    
+                
+                // Of important note - until React 16 - you can only return one node!!!
+                return (
+                    <div>
+                        <h1>{this.props.title}</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    {headings}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {rows}
+                            </tbody>
+                        </table>
+                    </div>
+                )
+            }
+        })
+       // Data Removed from within the render Function and passed to the App
+       var data = [{
                         "when": "2 minutes ago",
                         "who": "Jill Dupre",
                         "description": "Created new account"
@@ -25,43 +60,9 @@
                         "who": "Jordan Whash",
                         "description": "Created new account"
                     }];
-                    // Loop through Data to create table rows
-                    // {} is used in JSX to embed dynamic information in our view template
-                    // However, the use of the map function does not have the  nal return value from render function
-                    // JSX allows us to arbitrarily create elements to be used in our views 
-                    // React allows us to dynamically create, use, and reuse the parts of views
-                    var rows = data.map(function(row){
-                        return  <tr>
-                                    <td>{row.when}</td>
-                                    <td>{row.who}</td>
-                                    <td>{row.description}</td>
-                                </tr>
-                    });
-                // 
-                    var headings = ['When', 'Who', 'Description'];
-                
-                // Of important note - until React 16 - you can only return one node!!!
-                return (
-                    <div>
-                        <h1>{this.props.title}</h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>When</th>
-                                    <th>Who</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {rows}
-                            </tbody>
-                        </table>
-                    </div>
-                )
-            }
-        })
-        // Of another note - it is typically bad practice to apply directly to the dom body - this will be udpated in the next commit
-        ReactDOM.render(<App title='Recent  Changes' />,  document.querySelector('#App'))
+        var headings = ["Last change at", "By Author", "Summary"];
+        
+        ReactDOM.render(<App title='Recent  Changes' headings = {headings} data = {data}/>,  document.querySelector('#App'))
     </script>
 </head>
 <body>
