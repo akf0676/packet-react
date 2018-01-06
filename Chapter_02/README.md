@@ -82,3 +82,49 @@ Passing probs one by one could become cumbersome. As APIs etc change it will be 
 
 All the properties of object are passed as props to the App component.
 The order of the attributes is important though. Newer attributes override previous ones.
+
+## JSX Gotchas
+JSX is not HTML - remember this or you will run into trouble.
+### Examples
+If you want to pass some custom attribute that does not exist in the HTML speci cation, then React will simply ignore it.
+'''
+   // custom-attribute won't be rendered
+   <table custom-attribute = 'super_awesome_table'>
+   </table>
+'''
+"It must be passed as a data attribute so that React will render it."
+ '''
+   // data-custom-attribute will be rendered
+   <table data-custom-attribute = 'super_awesome_table'>
+   </table>
+'''
+"We may also run into some issues while rendering the HTML content dynamically. In the JSX tags, we can add a valid HTML entity directly."
+'''
+  // Using HTML entity inside JSX tags.
+   <div> Mike &amp; Shawn </div>
+   // will produce
+    React.createElement("div", null, " Bob & Steve ")
+'''
+"But if we render it in a dynamic expression, it will then escape the ampersand."
+'''
+   // Using HTML entity inside dynamic expression
+   var first = 'Bob';
+   var second = 'Steve';
+   <div> { first + '&amp;' + second } </div>
+   var first = 'Bob';
+   var second = 'Steve';
+   React.createElement("div", null, " ", first + '&amp;' + second, " ")
+'''
+"It happens as React escapes all the strings in order to prevent XSS attacks by default. To overcome it, we can directly pass the Unicode character of &amp; or we can use arrays of strings and JSX elements." Mike explained.
+'''
+   // Using mixed arrays of JSX elements and normal variables
+   <div> {[first, <span>&amp;</span>, second]} </div>
+   React.createElement("div", null, " ", [first,
+                                      React.createElement("span", null,
+ "&"), second], " ")
+ '''
+ as a last resort, React also allows to render raw HTML using a special dangerouslySetInnerHTML prop
+ '''
+    // Rendering raw HTML directly
+   <div dangerouslySetInnerHTML={{__html: 'Mike &amp; Shawn'}} />
+'''
