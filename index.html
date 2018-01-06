@@ -9,6 +9,8 @@
     <script type="text/babel">
         var App = React.createClass({
             render: function() {
+                
+                console.log("Output - " + this.props.title)
                 // Define Data in render method - to simulate how the table will be dynamically produced
                 var data = [{
                         "when": "2 minutes ago",
@@ -36,10 +38,12 @@
                                 </tr>
                     });
                 // 
+                    var headings = ['When', 'Who', 'Description'];
+                
                 // Of important note - until React 16 - you can only return one node!!!
                 return (
                     <div>
-                        <h1>Recent Changes</h1>
+                        <h1>{this.props.title}</h1>
                         <table>
                             <thead>
                                 <tr>
@@ -57,7 +61,7 @@
             }
         })
         // Of another note - it is typically bad practice to apply directly to the dom body - this will be udpated in the next commit
-        ReactDOM.render(<App />,  document.querySelector('#App'))
+        ReactDOM.render(<App title='Recent  Changes' />,  document.querySelector('#App'))
     </script>
 </head>
 <body>
