@@ -43,8 +43,8 @@ We could consider this Two Components - Headings and Row Components - but we can
     </Rows>
 </table>
 ```
-## JavaScript Expressions (Child )
-By adding them in curly braces as children of the <tr> tag. These expressions that are used to specify the child components are called child expressions.
+## JavaScript Expressions (Child & Javascript)
+By adding them in curly braces as children of the '''<tr>''' tag. These expressions that are used to specify the child components are called child expressions.
 
 These are simple expressions used for passing props or evaluating some JavaScript code that can be used as an attribute value. For example 
 '''
