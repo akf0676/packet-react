@@ -2,62 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>React JS (15.6.2)</title>
+    <meta name="viewport" content="width=device-width">
+    <title>React JS (15.6.2 - JSX in Detail)</title>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.2/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/15.6.2/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-    <script type="text/babel">
-        var App = React.createClass({
-            render: function() {
-                // Headings data passed to Render Function from the ReactDOM.render props
-                var headings = this.props.headings.map(function(heading){
-                    return <th>{heading}</th>
-                });
-                // Loop through Data passed to Render Function from the ReactDOM.render props
-                var rows = this.props.data.map(function(row){
-                    return  <tr>
-                                <td>{row.when}</td>
-                                <td>{row.who}</td>
-                                <td>{row.description}</td>
-                            </tr>
-                });
-              
-                // Of important note - until React 16 - you can only return one node!!!
-                return (
-                    <div>
-                        <h1>{title}</h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    {headings}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {rows}
-                            </tbody>
-                        </table>
-                    </div>
-                )
-            }
-        })
-       // Data Removed from within the render Function and passed to the App
-       var data = [{
-                        "when": "2 minutes ago",
-                        "who": "Jill Dupre",
-                        "description": "Created new account"
-                    }, {
-                        "when": "1 hour ago",
-                        "who": "Lose White",
-                        "description": "Added fist chapter"
-                    }, {
-                        "when": "2 hours ago",
-                        "who": "Jordan Whash",
-                        "description": "Created new account"
-                    }];
-        var headings = ["Last change at", "By Author", "Summary"];
-        var title = 'Recent Changes';
-        ReactDOM.render(<App title={title} headings = {headings} data = {data}/>,  document.querySelector('#App'))
-    </script>
+    <script src="AppData.js"></script>
+    <script type="text/babel" src="App.js"></script>
 </head>
 <body>
     <div id="App"></div>
