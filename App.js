@@ -1,4 +1,13 @@
-// Chapter 02 - create composable comonetnst in smaller chunks
+// Chapter 02 - create composable components in smaller chunks
+// Namespacing - Creating a top Level Component
+// This will also change the render call for the App
+var RecentChangesTable = React.createClass ({
+  render: function(){
+    return <table className="table">
+              {this.props.children}
+            </table>;
+  }
+});
 var Title = React.createClass({
   render: function() {
     return (<h1>{this.props.title}</h1>);
@@ -46,13 +55,15 @@ var App = React.createClass({
   render: function() {
       // Of important note - until React 16 - you can only return one node!!!
       return (
-          <div>
-              <Title title = {this.props.title} />
-              <table className="table">
+        <div>
+          <Title title = {this.props.title} />
+          <RecentChangesTable>
+              
                   <Headings headings = {this.props.headings} />
                   <Rows changeSets = {this.props.changeSets} />
-              </table>
-          </div>
+          
+          </RecentChangesTable>
+        </div>
       )
   }
 })

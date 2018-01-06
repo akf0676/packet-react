@@ -64,4 +64,5 @@ You dont need to wrap in curly braces
 */
 '''
 
-
+## Namespacing
+React allows creating components that are namespaced under a parent component so that they don't interfere with other components or global functions.
