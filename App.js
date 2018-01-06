@@ -7,14 +7,14 @@ var Title = React.createClass({
 var Heading = React.createClass({
   render: function() {
     // assumption that heading will receive this as a prop
-    return (<th>{this.props.heading}</th>);
+    return (<th key={this.props.index}>{this.props.heading}</th>);
   }
 });
 
 var Row = React.createClass ({
   render: function() {
     // The Row will receive a changeSet object in its props
-    return (<tr>
+    return (<tr key = {this.props.index}>
               <td>{this.props.changeSet.when}</td>
               <td>{this.props.changeSet.who}</td>
               <td>{this.props.changeSet.description}</td>
@@ -25,8 +25,8 @@ var Row = React.createClass ({
 // Headings will get a list of titles passed to it.
 var Headings = React.createClass({
   render: function(){
-    var headings = this.props.headings.map(function(heading) {
-      return (<Heading heading = {heading} />);
+    var headings = this.props.headings.map(function(heading, index) {
+      return (<Heading heading = {heading} key = {index}/>);
     });
 
     return (<thead><tr>{headings}</tr></thead>);
@@ -35,8 +35,8 @@ var Headings = React.createClass({
 
 var Rows = React.createClass ({
   render: function() {
-    var rows = this.props.changeSets.map(function(changeSet){
-      return (<Row changeSet = {changeSet} />);
+    var rows = this.props.changeSets.map(function(changeSet, index){
+      return (<Row changeSet = {changeSet} key = {index} />);
     })
     return (<tbody>{rows}</tbody>);
   } 

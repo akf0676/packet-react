@@ -6,12 +6,13 @@ JSX makes it easy to build React components. It reduces the amount of code requi
 
 ## Transforming JSX into JavaScript
 Example:-
+```
  // Input (JSX):
    var app = <App name="Andy" />;
 
 // Output (JS):
    var app = React.createElement(App, {name:"Andy"});
-
+```
 JSX is not meant to be compiled at runtime.
 
 ## HTML tags vs React components
@@ -23,13 +24,14 @@ JSX uses this convention to differentiate between the local component classes an
 Based on the example in Chapter 01 - we will split this single component into small composable components.  These simple modular components will use other modular components with well-de ned self- contained interfaces.
 
 Based on the following - structure
+```
 <table>
     {tableHeadings}
     {tableRows}
 </table>
-
+```
 We could consider this Two Components - Headings and Row Components - but we can go one step further. Both headings and rows are lists of still smaller units, a Heading and a Row tag, respectively. It can be visualized as follows:
-
+```
 <table>
     <Headings>
         <Heading/>
@@ -40,7 +42,7 @@ We could consider this Two Components - Headings and Row Components - but we can
         <Row/>
     </Rows>
 </table>
-
+```
 ## JavaScript Expressions (Child )
 By adding them in curly braces as children of the <tr> tag. These expressions that are used to specify the child components are called child expressions.
 
@@ -60,4 +62,6 @@ Line
 Comment 
 You dont need to wrap in curly braces
 */
-''''
+'''
+
+
