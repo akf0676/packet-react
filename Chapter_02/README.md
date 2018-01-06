@@ -45,18 +45,18 @@ We could consider this Two Components - Headings and Row Components - but we can
 ```
 ## JavaScript Expressions (Child & Javascript)
 By adding them in curly braces as children of the 
-'''html <tr> '''
+``` <tr> ```
  tag. These expressions that are used to specify the child components are called child expressions.
 
 These are simple expressions used for passing props or evaluating some JavaScript code that can be used as an attribute value. For example 
-'''
+```
 data = {data.length > 0 ? data : ''}
-'''
+```
 
 Anything that is present in curly braces is evaluated by JSX. It works for both children expressions as well as JavaScript expressions
 
 ## JSX Comments
-'''
+```
 {/* This is a comment */}
 or
 /* Multi
@@ -64,15 +64,14 @@ Line
 Comment 
 You dont need to wrap in curly braces
 */
-'''
+```
 
 ## Namespacing
 React allows creating components that are namespaced under a parent component so that they don't interfere with other components or global functions.
 by using 
-'''
+```
 this.props.children.
-'''
-
+```
 React, by default, captures all the child nodes between open and close tags of a component in an array and adds it to the props of that component as this.props.children. So we can render it using {this.props. children}. We will get all Headings and Rows as this.props.children in the RecentChangesTable component. The output is the same as before, when we used the <table> tag directly
 
 ## Spread Attributes
