@@ -13,3 +13,5 @@ var data = [{
 }];
 var headings = ["Last change at", "By Author", "Summary"];
 var title = 'Recent Changes';
+
+var props = { title: title, headings: headings, changeSets: data };

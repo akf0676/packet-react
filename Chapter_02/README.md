@@ -66,3 +66,19 @@ You dont need to wrap in curly braces
 
 ## Namespacing
 React allows creating components that are namespaced under a parent component so that they don't interfere with other components or global functions.
+by using '''this.props.children.'''
+
+React, by default, captures all the child nodes between open and close tags of a component in an array and adds it to the props of that component as this.props.children. So we can render it using {this.props. children}. We will get all Headings and Rows as this.props.children in the RecentChangesTable component. The output is the same as before, when we used the <table> tag directly
+
+## Spread Attributes
+Passing probs one by one could become cumbersome. As APIs etc change it will be dificult to keep track of the structure of the incoming data and pass it accordingly in the props. We can solve this using the *spread* attributes.
+
+'''
+   var props = { headings: headings, changeSets: data, timestamps:
+   timestamps };
+   ReactDOM.render(<App {...props } />,
+                        document.getElementById('container'));
+'''
+
+All the properties of object are passed as props to the App component.
+The order of the attributes is important though. Newer attributes override previous ones.

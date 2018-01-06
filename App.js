@@ -68,4 +68,5 @@ var App = React.createClass({
   }
 })
 
-ReactDOM.render(<App title={title} headings = {headings} changeSets = {data}/>,  document.getElementById('App'))
+ReactDOM.render(<App {...props} headings = {['Updated at ', 'Author',
+'Change']}/>,  document.getElementById('App'))
