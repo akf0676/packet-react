@@ -61,6 +61,13 @@ var App = React.createClass({
     author: React.PropTypes.string.isRequired
   },
   
+  //Default Props
+  getDefaultProps: function() {
+    return {
+      headings: ['Time Changed ', 'Who did it', 'What they changed']
+    };
+  },
+
   render: function() {
       // Of important note - until React 16 - you can only return one node!!!
       return (

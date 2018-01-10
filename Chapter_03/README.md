@@ -19,4 +19,7 @@ A component is the owner of a child component if that child gets created in the 
 Props can be accessed by `this.props`,  if anything in the parent's props changes, React will make sure that changes are flown downstream and will ew-render the componet tree. 
 
 ## Props Validation
-To validates Props, use the PropTypes, this will help ensure that the components are used correctly.
+To validates Props, use the PropTypes, this will help ensure that the components are used correctly. PropTypes are only checked in development, to check the assumptions we are making about components are being met.
+
+Along with standard types, it is also possible to validate custom types. See Example in Chapter 03 Commit  Chapter 03 - Props and PropTypes
+Custom PropType Validation with Warning Message for Headings [e7c20cf]

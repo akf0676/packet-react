@@ -11,7 +11,6 @@ var data = [{
     "who": "Jordan Whash",
     "description": "Created new account"
 }];
-var headings = ['Updated at: ', 'Author:', 'Change:'];
 var title = 'Recent Changes';
 
-var props = { title: title, headings: headings, changeSets: data };
+var props = { title: title, changeSets: data };
