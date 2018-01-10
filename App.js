@@ -53,14 +53,11 @@ RecentChangesTable.Rows = React.createClass ({
 
 var App = React.createClass({
   propTypes: {
-    headings: React.PropTypes.array,
+    headings: function(props, propName, componentName) {
+      if(propName === 'headings')
+        return Error('Failed Heading Validation');
+    },
     changeSets: React.PropTypes.array,
-    /* isRequired Example:
-      The line below will not show an error as we are not passing the author, which is required.
-      , but it will show a nice warning in console
-      Warning: Failed prop type: The prop `author` is marked as required in `App`, but its value is `undefined`.
-    in App
-    */
     author: React.PropTypes.string.isRequired
   },
   
