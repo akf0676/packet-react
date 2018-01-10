@@ -7,6 +7,11 @@ Each Chapter Branch - should include a README.md that pertain to the Chapter Tit
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+Project code runs on a local python server
+'''
+python -m SimpleHTTPServer 8000
+'''
 <!-- 
 ### Prerequisites
 

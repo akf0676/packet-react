@@ -52,6 +52,18 @@ RecentChangesTable.Rows = React.createClass ({
 });
 
 var App = React.createClass({
+  propTypes: {
+    headings: React.PropTypes.array,
+    changeSets: React.PropTypes.array,
+    /* isRequired Example:
+      The line below will not show an error as we are not passing the author, which is required.
+      , but it will show a nice warning in console
+      Warning: Failed prop type: The prop `author` is marked as required in `App`, but its value is `undefined`.
+    in App
+    */
+    author: React.PropTypes.string.isRequired
+  },
+  
   render: function() {
       // Of important note - until React 16 - you can only return one node!!!
       return (
