@@ -23,3 +23,27 @@ To validates Props, use the PropTypes, this will help ensure that the components
 
 Along with standard types, it is also possible to validate custom types. See Example in Chapter 03 Commit  Chapter 03 - Props and PropTypes
 Custom PropType Validation with Warning Message for Headings [e7c20cf]
+
+## Specifying default props
+You are able to define some default values for props. This is useful when parent component is passing props based on some condition or not passing some props at all due to some change,
+
+## Modifying this.props.children
+`this.props.children` is a special prop, as React captures all the children that are present in the opening and closing tag into props that can be accessed. Some of this adjustment to App.js was done in the coding in Chapter 02
+
+##State
+Every component can have its own state in React. The main difference between state and props is that props are passed to the component from the parent component; whereas, state is something that is internal to the component.
+
+Props are passed with the compone is instantiated, State is something that can change over time.  Changes in state affect the rendering of components.
+**State should be introduced only when it is required**.
+
+###Setting initial state
+The initial state can be set using the getInitialState function.
+State can be accessed similar to props using this.state.
+
+###Setting State
+Updating state is also easy using the setState() function.
+
+###Avoding State
+If a component does not change, then there is no need to use state. It's better to depend on props passed by the parent component in that case. This also avoids re-rendering of the component again and again as changes to state initiate a re-render of the component.
+
+###State versus props

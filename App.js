@@ -1,6 +1,4 @@
-// Chapter 02 - create composable components in smaller chunks
-// Namespacing - Creating a top Level Component
-// This will also change the render call for the App
+// Chapter 03 - Utlise this.props.children
 var RecentChangesTable = React.createClass ({
   render: function(){
     return <table className="table">
@@ -52,6 +50,16 @@ RecentChangesTable.Rows = React.createClass ({
 });
 
 var App = React.createClass({
+  // Chapter 03 - Get Initial State
+  getInitialState: function() {
+    return {
+      changeSets: []
+    };
+  },
+  // Chapter 03 - Updating state
+  handleEvent: function(data) {
+    this.setState({ changeSets: data.changeSets});
+  },
   propTypes: {
     headings: function(props, propName, componentName) {
       if(propName === 'headings')
@@ -60,8 +68,6 @@ var App = React.createClass({
     changeSets: React.PropTypes.array,
     author: React.PropTypes.string.isRequired
   },
-  
-  //Default Props
   getDefaultProps: function() {
     return {
       headings: ['Time Changed ', 'Who did it', 'What they changed']
