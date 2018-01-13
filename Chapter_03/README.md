@@ -57,3 +57,12 @@ Avoid duplicating props in state.
 
 ## Componet Life Cycle Overview
 A component goes through differnt life cycle events. They help facilitate when we should initialise which part of the compont or when data is fetched. https://www.bigbinary.com/videos/keep-up-with-reactjs/react-life-cycle-methods-in-depth
+
+* componentWillMount
+* componentDidMount
+* componentWillReceiveProps(object nextProps)
+* boolean shouldComponentUpdate(object nextProps, object nextState)
+* componentWillUpdate(object nextProps, object nextState)
+* componentDidUpdate(object prevProps, object prevState)
+* componentWillUnmount()
+* React.unmountComponentAtNode(document.body)

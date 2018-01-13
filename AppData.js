@@ -13,4 +13,5 @@ var data = [{
 }];
 var title = 'Recent Changes';
 
+//Chapter 03 - updates to use default props for headings
 var props = { title: title, changeSets: data };
