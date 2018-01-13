@@ -56,10 +56,7 @@ var App = React.createClass({
       changeSets: []
     };
   },
-  // Chapter 03 - Updating state
-  handleEvent: function(data) {
-    this.setState({ changeSets: data.changeSets});
-  },
+  
   propTypes: {
     headings: function(props, propName, componentName) {
       if(propName === 'headings')
@@ -73,9 +70,43 @@ var App = React.createClass({
       headings: ['Time Changed ', 'Who did it', 'What they changed']
     };
   },
+  // Chapter 03 - Get Data
+  componentDidMount: function(){
+    //Perfrom AJAC call to fetch new data
+    console.log("get ajax request");
+    $.ajax ({
+      url: 'http://openlibrary.org/recentchanges.json?limit=10',
+      context: this,
+      dataType: 'json',
+      type: 'GET'
+    }).done(function (data) {
+      var changeSets = this.mapOpenLibraryDataToChangeSet(data);
+      console.log(changeSets);
+      this.setState({changeSets: changeSets});
+    });
+  },
+  // Format OpenLibrary JSON feed
+  mapOpenLibraryDataToChangeSet : function(data) {
+    console.log("format response");
+    return data.map(function(change, index) {
+      return {
+        "when": jQuery.timeago(change.timestamp),
+        "who": change.author.key,
+        "description": change.comment
+      }
+    });
+  },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    console.log('06 - shouldComponentUpdate');
 
+    return true;
+},
+componentWillUpdate: function() {
+  console.log('07 - componentWillUpdate');
+},
   render: function() {
-      // Of important note - until React 16 - you can only return one node!!!
+    console.log("render function")  
+    // Of important note - until React 16 - you can only return one node!!!
       return (
         <div>
           <RecentChangesTable.Title title = {this.props.title} />

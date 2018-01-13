@@ -26,7 +26,7 @@ var App = React.createClass({
     },
     shouldComponentUpdate: function(nextProps, nextState) {
         console.log('06 - shouldComponentUpdate');
-        return false;
+        return true;
     },
     componentWillUpdate: function() {
         console.log('07 - componentWillUpdate');
