@@ -47,3 +47,11 @@ Updating state is also easy using the setState() function.
 If a component does not change, then there is no need to use state. It's better to depend on props passed by the parent component in that case. This also avoids re-rendering of the component again and again as changes to state initiate a re-render of the component.
 
 ###State versus props
+Important to understand the difference between props and state and where to use what.
+####Props
+Props are immutable (unable to be changed). They are owned by the component which passes them to some other component.
+####Sate
+Is internal and private to the component. State can and will change depedning on interactions.
+State should store simple data, ie a CSS class that hides or displays the component.
+Avoid duplicating props in state.
+
