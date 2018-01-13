@@ -1,4 +1,4 @@
-#Data Flow and Life Cycle Events
+##Data Flow and Life Cycle Events
 
 * Data flows in React
 * Props
@@ -55,3 +55,5 @@ Is internal and private to the component. State can and will change depedning on
 State should store simple data, ie a CSS class that hides or displays the component.
 Avoid duplicating props in state.
 
+##Componet Life Cycle Overview
+A component goes through differnt life cycle events. They help facilitate when we should initialise which part of the compont or when data is fetched. [url]https://www.bigbinary.com/videos/keep-up-with-reactjs/react-life-cycle-methods-in-depth
