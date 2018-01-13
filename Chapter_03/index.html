@@ -9,7 +9,8 @@
         <title>Component Life Cycle Example</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.2/react.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.2/react.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/15.6.2/react-dom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
        
@@ -17,6 +18,41 @@
     </head>
     <body>
         <h1>Component Life Cycle Example</h1>
-        
+        <div id="CLC"></div>
+        <ul>
+            <li>Simple app displays "true" text and then on clicking, it changes it to display "false"</li>
+            <li>View the console -there is a simple console.log message for each lifecycle method</li>
+            <li>The order of run <br />
+                <ol>
+                    <li>getDefaultProps</li>
+                    <li>getInitialState</li>
+                    <li><code>ReactDOM.render</code> triggers<code>componentWillMount</code> Entry point for our component. Method called when a component gets mounted first time.<br />
+                        <code>componentWillMount</code> is where you can call <code>setState</code> to change peform changes to our internal data (if required).  However, this does not call a new re-render or this method </li>
+                    <li>The actual <code>render</code> method then executes, and is responsible for the component display</li>
+                    <li><code>componentDidMount</code> invoked immediately after mounting and rendering of the component<br />
+                        This method can be used to fetch dynamis information we want to display in the component
+                    </li>
+                    <li>Thre is a simple onClick event. This calls this.toggleState, which toggles the current status from true to false and vice versa.
+                        <br />As state is affected, React re-renders the App component - via the same <code>render</code> function
+                        <br />When state is changed, React knows it needs to re-render
+                    </li>
+                    <li>React calls <code>shouldComponentUpdate</code> first.  This method returns <code>true</code> or <code>false</code> indicating if React renders
+                        <br />If this returns <code>false</code>, the render function is not called
+                        <br />You can compare <code>nextProps</code> and <code>nextState</code> to the existing values and then decide whether to re-render
+                        <br />By default this always returns <code>true</code>
+                    </li>
+                    <li><code>componentWillUpdate</code> called just before <code>rendering</code>
+                        <br />You can under any last minute changes / housekeepping
+                        <i>Of Note:</i> You can not call <code>setState</code> in this method
+                    </li>
+                    <li><code>componentWillReceiveProps</code>receives <code>nextProps</code>, which are the new props that the child component receives from the parent component.
+                        <br /> This method is not called for initial render. We can update the state or do some other housekeeping work based on the changes in props.
+                    </li>
+                    <li><code>componentWillUnmount</code> is called when the component is unmounted, this is normally used to release the resources, perform cleanups, unset any timers, and so on.
+
+                    </li>
+                </ol>
+            </li>
+        </ul>
     </body>
 </html>
