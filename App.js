@@ -113,7 +113,7 @@ componentWillUpdate: function() {
           <RecentChangesTable>
               
                   <RecentChangesTable.Headings headings = {this.props.headings} />
-                  <RecentChangesTable.Rows changeSets = {this.props.changeSets} />
+                  <RecentChangesTable.Rows changeSets = {this.state.changeSets} />
           
           </RecentChangesTable>
         </div>
