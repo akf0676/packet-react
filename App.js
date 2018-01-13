@@ -14,7 +14,11 @@ RecentChangesTable.Title = React.createClass({
 RecentChangesTable.Heading = React.createClass({
   render: function() {
     // assumption that heading will receive this as a prop
-    return (<th key={this.props.index}>{this.props.heading}</th>);
+    var headingStyle = {
+      backgroundColor: 'FloralWhite',
+      fontSize: '19px'
+    };
+    return (<th key={this.props.index} style={headingStyle}>{this.props.heading}</th>);
   }
 });
 
@@ -33,10 +37,10 @@ RecentChangesTable.Row = React.createClass ({
 RecentChangesTable.Headings = React.createClass({
   render: function(){
     var headings = this.props.headings.map(function(heading, index) {
-      return (<RecentChangesTable.Heading heading = {heading} key = {index}/>);
+      return (<RecentChangesTable.Heading heading = {heading} key = {'heading-' + index}/>);
     });
 
-    return (<thead><tr>{headings}</tr></thead>);
+    return (<thead><tr className='table-th'>{headings}</tr></thead>);
   }
 });
 
@@ -63,7 +67,7 @@ var App = React.createClass({
         return Error('Failed Heading Validation');
     },
     changeSets: React.PropTypes.array,
-    author: React.PropTypes.string.isRequired
+    changeSets: React.PropTypes.array.isRequired
   },
   getDefaultProps: function() {
     return {
@@ -73,7 +77,7 @@ var App = React.createClass({
   // Chapter 03 - Get Data
   componentDidMount: function(){
     //Perfrom AJAC call to fetch new data
-    console.log("get ajax request");
+    //console.log("get ajax request");
     $.ajax ({
       url: 'http://openlibrary.org/recentchanges.json?limit=10',
       context: this,
@@ -81,13 +85,12 @@ var App = React.createClass({
       type: 'GET'
     }).done(function (data) {
       var changeSets = this.mapOpenLibraryDataToChangeSet(data);
-      console.log(changeSets);
       this.setState({changeSets: changeSets});
     });
   },
   // Format OpenLibrary JSON feed
   mapOpenLibraryDataToChangeSet : function(data) {
-    console.log("format response");
+    // console.log("format response");
     return data.map(function(change, index) {
       return {
         "when": jQuery.timeago(change.timestamp),
@@ -96,16 +99,8 @@ var App = React.createClass({
       }
     });
   },
-  shouldComponentUpdate: function(nextProps, nextState) {
-    console.log('06 - shouldComponentUpdate');
 
-    return true;
-},
-componentWillUpdate: function() {
-  console.log('07 - componentWillUpdate');
-},
   render: function() {
-    console.log("render function")  
     // Of important note - until React 16 - you can only return one node!!!
       return (
         <div>
