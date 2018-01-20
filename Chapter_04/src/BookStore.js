@@ -1,6 +1,34 @@
 //@ts-check
 import React from 'react';
 
+var BookList = React.createClass({
+    render() {
+        return(
+            <h1>
+                Choose from a wider variety of books availble in our Store.
+            </h1>
+        );
+    }
+});
+var ShippingDetails = React.createClass({
+    render() {
+        return(
+            <h1>
+                Enter your Shipping Information
+            </h1>
+        );
+    }
+});
+var DeliveryDetails = React.createClass({
+    render() {
+        return(
+            <h1>
+                Choose your delivery options here
+            </h1>
+        );
+    }
+});
+
 var BookStore = React.createClass({
     render() {
         switch (step) {
