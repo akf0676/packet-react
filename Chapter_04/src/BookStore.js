@@ -91,10 +91,15 @@ var DeliveryDetails = React.createClass({
 var BookStore = React.createClass({
     getInitialState() {
         return ({
-            currentStep: 1
+            currentStep: 1,
+            formValues : {}
         });
     },
     updateFormData(formData) {
+        // ES6 method—Object.assign. Used to copy the values of all the enumerable properties from one or more source objects to a target object
+        var formValues = Object.assign({}, this.state.formValues, formData);
+        var nextStep = this.currentStep + 1;
+        this.setState({currentStep: nextStep, formValues : formValues});
         console.log(formData);
     }, 
     render() {
