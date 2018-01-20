@@ -63,6 +63,9 @@ var BookList = React.createClass({
     handleSubmit(event) {
         console.log(event);
         event.preventDefault();
+        this.props.updateFormData(
+            {selectedBooks: this.state.selectedBooks }
+        );
         console.log("Form submitted");
     }
 });
