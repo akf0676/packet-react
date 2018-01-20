@@ -42,6 +42,12 @@ var BookList = React.createClass({
                 </form>
             </div>
         );
+    },
+    // Handling submitting the form - React provides an onSubmit event 
+    handleSubmit(event) {
+        console.log(event);
+        event.preventDefault();
+        console.log("Form submitted");
     }
 });
 var ShippingDetails = React.createClass({
