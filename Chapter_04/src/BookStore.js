@@ -30,8 +30,13 @@ var DeliveryDetails = React.createClass({
 });
 
 var BookStore = React.createClass({
+    getInitialState() {
+        return ({
+            currentStep: 1
+        });
+    },
     render() {
-        switch (step) {
+        switch (this.state.currentStep) {
             case 1:
                 return <BookList />;
             case 2:
