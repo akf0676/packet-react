@@ -17,8 +17,9 @@
         <script type="text/babel" src="src/AppComponent.js"></script>
     </head>
     <body>
-        <h1>Input Example</h1>
-        <div id="CLC"></div>
+        <h1>Input Example List</h1>
+        <h2>Input Example - Controlled Components - Imutable</h2>
+        <div id="IE"></div>
         <ul>
             <li>Input fields rendered in this manner - are not editable</li>
             <li>Warnings will show in the console:-
@@ -26,7 +27,16 @@
                 Warning: Failed form propType: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`. Check the render method of `InputExample`.<br />
                 <strong>Note:</strong>React has warned us that we need to either provide the defaultValue or onChange prop to make this  field mutabl
             </li>
-            <li></li>
+            <li>
+                This is an example of a controlled component.<br />
+                The component Value is controlled by React.  By providing the value, any user input won't have any effect.
+            </li>
         </ul>
+        <h2>Input Version 2 - Controlled Components - Mutable</h2>
+        <div id="IEV2"></div>
+        <h2>Input Version 3 - Uncontrolled components</h2>
+        <div id="IEV3"></div>
+        <h2>Input Version 4 - Uncontrolled components - default value</h2>
+        <div id="IEV4"></div>
     </body>
 </html>
