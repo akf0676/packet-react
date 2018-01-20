@@ -91,14 +91,20 @@ var BookStore = React.createClass({
             currentStep: 1
         });
     },
+    updateFormData(formData) {
+        console.log(formData);
+    }, 
     render() {
         switch (this.state.currentStep) {
             case 1:
-                return <BookList />;
+                return <BookList 
+                            updateFormData={this.updateFormData} />;
             case 2:
-                return <ShippingDetails />;
+                return <ShippingDetails 
+                            updateFormData={this.updateFormData}/>;
             case 3: 
-                return <DeliveryDetails />;
+                return <DeliveryDetails 
+                            updateFormData={this.updateFormData}/>;
         }
     }
 });

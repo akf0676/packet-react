@@ -18,3 +18,20 @@ There will be a lot of form interations such as:-
 
 ##Getting Started with Forms
 Forms behave differentl in React.  Form comonents are mutated when the user interacts with them. You must take care that we are managing interactions properly.
+Input - Examples can be see within CH04-ScratchPad.html
+
+##Bookstore
+###Task 1 - Getting Started
+Build a form wizard, modeling all the steps that the user will take while using the online bookstore.
+- We will start with a form, where the user selects the book that they want to buy
+- In the next step, the user will enter the information related to the billing and shipping address
+- After this, the user needs to choose a delivery mechanism
+- In the end, the user will confirm the transaction and place the order
+
+This will be 4 forms, but controlled by a single parent.
+The parent will keep a track of the state that the user is in and will render a for this step.
+####Parent Child relationship - Communicating with the parent component.
+The easiest way for a child to communicate with the parent is via props.
+Eventhough, props are generally the attributes or properties that are sent to a child.
+In order for a child to communicate with the parent using props we will need to use the   {} syntax. 
+You can pass any valid expression as a prop. You can pass a function callback as prop to a child component. A child can call it to update the state of the parent.
