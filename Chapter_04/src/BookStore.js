@@ -10,11 +10,20 @@ var BookList = React.createClass({
                     { name: 'Monk who sold his Ferrari', author: 'Robin Sharma' },
                     { name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }
                 ],
-                selectedBooks: []
+                selectedBooks: [],
+                error: false
             }
         );
     },
-
+    _renderError() {
+        if (this.setState.error){
+            return(
+                <div className="alert alert-danger">
+                    {this.state.error}
+                </div>
+            );
+        }
+    },
     _renderBook(book) {
         return (
             <div className="checkbox">
@@ -40,11 +49,14 @@ var BookList = React.createClass({
         this.setState({selectedBooks : selectedBooks});
     },
     render() {
+        var errorMessage = this._renderError();
+
         return(
             <div>
                 <h1>
                     Choose from a wide variety of books availble in our Store.
                 </h1>
+                {errorMessage}
                 <form>
                     {/* 
                         This is fat arrow syntax to define functions
@@ -63,9 +75,18 @@ var BookList = React.createClass({
     handleSubmit(event) {
         console.log(event);
         event.preventDefault();
-        this.props.updateFormData(
-            {selectedBooks: this.state.selectedBooks }
-        );
+        // Error Checking - check at least one  book is selected
+        if(this.selectedBooks.selectedBooks.length === 0 ){
+            this.state({
+                error : 'Please choose at least on book to continue'
+            });
+        } else {
+            this.state({ error: false});
+            this.props.updateFormData(
+                {selectedBooks: this.state.selectedBooks }
+            );
+        }
+
         console.log("Form submitted");
     }
 });
