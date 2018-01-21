@@ -2,7 +2,7 @@
 import React from 'react';
 
 var BookList = React.createClass({
-    getIntialState() {
+    getInitialState() {
         return (
             {
                 books: [
@@ -62,10 +62,11 @@ var BookList = React.createClass({
                         This is fat arrow syntax to define functions
                         This is an ES6 feature - a shorthand for writing functions
                         https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-                    */} 
+                    */}
                     {this.state.books.map((book) => {
-                        return this._renderBook(book);
-                    })}
+                        return this._renderBook(book); })
+                    }
+ 
                     <input type="submit" className="btn btn-success" />
                 </form>
             </div>
@@ -137,3 +138,5 @@ var BookStore = React.createClass({
         }
     }
 });
+
+module.exports = BookStore;

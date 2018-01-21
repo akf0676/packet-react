@@ -19,6 +19,13 @@ There will be a lot of form interations such as:-
 ## Getting Started with Forms
 Forms behave differentl in React.  Form comonents are mutated when the user interacts with them. You must take care that we are managing interactions properly.
 Input - Examples can be see within CH04-ScratchPad.html
+During the reading of the chapter, it does not speak much about how to run this small app.
+By reviewing the book - I found the GitHub project :- https://github.com/bigbinary/reactjs-by-example
+Utilising, and adjusting server.js, webpack.config.js and package.json - was able to run the app local for testing purposes.
+Within the Chapter_04 directory run:-
+* npm install
+* npm start
+* Navigate to http://localhost:9000
 
 ## Bookstore
 ### Task 1 - Getting Started
