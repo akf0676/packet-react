@@ -6,9 +6,9 @@ var BookList = React.createClass({
         return (
             {
                 books: [
-                    { name: 'Zero to One', author: 'Peter Thiel' },
-                    { name: 'Monk who sold his Ferrari', author: 'Robin Sharma' },
-                    { name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }
+                    { id: 1, name: 'Zero to One', author: 'Peter Thiel' },
+                    { id: 2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma' },
+                    { id: 3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }
                 ],
                 selectedBooks: [],
                 error: false
@@ -26,8 +26,8 @@ var BookList = React.createClass({
     },
     _renderBook(book) {
         return (
-            <div className="checkbox">
-                <label htmlFor="{book.name}">
+            <div className="checkbox" key={book.id}>
+                <label htmlFor="{book.name}" >
                     <input type="checkbox" 
                         value={book.name}
                         onChange={this.handleSelectedBooks} /> 
