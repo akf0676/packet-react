@@ -4,8 +4,7 @@ import React from 'react';
 var BookList = React.createClass({
     getInitialState() {
         return (
-            {
-                books: [
+            {   books: [
                     { id: 1, name: 'Zero to One', author: 'Peter Thiel' },
                     { id: 2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma' },
                     { id: 3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }
@@ -15,8 +14,21 @@ var BookList = React.createClass({
             }
         );
     },
+    
+    _renderBook(book) {
+        return (
+            <div className="checkbox" key={book.id}>
+                <label htmlFor="{book.name}" >
+                    <input type="checkbox" value={book.name}
+                        onChange={this.handleSelectedBooks} /> 
+                    {book.name} -- {book.author}
+                </label>
+            </div>
+        );
+    },
+    
     _renderError() {
-        if (this.setState.error){
+        if (this.state.error){
             return(
                 <div className="alert alert-danger">
                     {this.state.error}
@@ -24,18 +36,7 @@ var BookList = React.createClass({
             );
         }
     },
-    _renderBook(book) {
-        return (
-            <div className="checkbox" key={book.id}>
-                <label htmlFor="{book.name}" >
-                    <input type="checkbox" 
-                        value={book.name}
-                        onChange={this.handleSelectedBooks} /> 
-                    {book.name} -- {book.author}
-                </label>
-            </div>
-        );
-    },
+    
     handleSelectedBooks(event) {
         var selectedBooks = this.state.selectedBooks;
         var index = selectedBooks.indexOf(event.target.value);
@@ -46,8 +47,25 @@ var BookList = React.createClass({
         } else {
             selectedBooks.splice(index, 1);
         }
+
         this.setState({selectedBooks : selectedBooks});
     },
+    // Handling submitting the form - React provides an onSubmit event 
+    handleSubmit(event) {
+        event.preventDefault();
+        // Error Checking - check at least one  book is selected
+        if(this.state.selectedBooks.length === 0 ){
+            this.setState({
+                error : 'Please choose at least on book to continue'
+            });
+        } else {
+            this.setState({ error: false});
+            this.props.updateFormData(
+                {selectedBooks: this.state.selectedBooks }
+            );
+        }        console.log("Form submitted");
+    },
+    
     render() {
         var errorMessage = this._renderError();
 
@@ -57,7 +75,7 @@ var BookList = React.createClass({
                     Choose from a wide variety of books availble in our Store.
                 </h1>
                 {errorMessage}
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     {/* 
                         This is fat arrow syntax to define functions
                         This is an ES6 feature - a shorthand for writing functions
@@ -72,24 +90,6 @@ var BookList = React.createClass({
             </div>
         );
     },
-    // Handling submitting the form - React provides an onSubmit event 
-    handleSubmit(event) {
-        console.log(event);
-        event.preventDefault();
-        // Error Checking - check at least one  book is selected
-        if(this.selectedBooks.selectedBooks.length === 0 ){
-            this.state({
-                error : 'Please choose at least on book to continue'
-            });
-        } else {
-            this.state({ error: false});
-            this.props.updateFormData(
-                {selectedBooks: this.state.selectedBooks }
-            );
-        }
-
-        console.log("Form submitted");
-    }
 });
 var ShippingDetails = React.createClass({
     render() {
@@ -122,7 +122,7 @@ var BookStore = React.createClass({
         var formValues = Object.assign({}, this.state.formValues, formData);
         var nextStep = this.currentStep + 1;
         this.setState({currentStep: nextStep, formValues : formValues});
-        console.log(formData);
+        console.log(formValues);
     }, 
     render() {
         switch (this.state.currentStep) {
