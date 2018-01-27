@@ -152,6 +152,10 @@ var ShippingDetails = React.createClass({
                         <input className="form-control"
                             type="text"
                             placeholder="Full Name"
+                            /* 
+                                - assigning the value prop of the input  elds to it's corresponding state
+                                - ensure  that the UI re ects the latest state, based on the user interaction
+                            */
                             value={this.state.fullName}
                             onChange = {
                                 (event) => this.handleChange(event, 'fullName')
@@ -161,6 +165,10 @@ var ShippingDetails = React.createClass({
                         <input className="form-control"
                             type="text"
                             placeholder="Shipping Address"
+                            /* 
+                                - assigning the value prop of the input  elds to it's corresponding state
+                                - ensure  that the UI re ects the latest state, based on the user interaction
+                            */
                             value={this.state.shippingAddress}
                             onChange = {
                                 (event) => this.handleChange(event, 'shippingAddress')
@@ -170,6 +178,10 @@ var ShippingDetails = React.createClass({
                         <input className="form-control"
                             type="text"
                             placeholder="Contact Number"
+                            /* 
+                                - assigning the value prop of the input  elds to it's corresponding state
+                                - ensure  that the UI re ects the latest state, based on the user interaction
+                            */
                             value={this.state.contactNumber}
                             onChange = {
                                 (event) => this.handleChange(event, 'contactNumber')
