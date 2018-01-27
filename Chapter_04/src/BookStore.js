@@ -127,12 +127,14 @@ var ShippingDetails = React.createClass({
             contactNumber: this.state.contactNumber,
             shippingAddress: this.state.shippingAddress
         }
+        // Passing this state to the updateFormData function of the parent component in the end.
         if (this._validateInput()) {
             this.props.updateFormData(formData);
         }
         console.log("Shipping Details Submitted");
     },
     handleChange(event, attribute) {
+        // this method ensures state is updated as user interacts with the input fields
         var newState = this.state;
         newState[attribute] = event.target.value;
         this.setState(newState);
@@ -157,6 +159,10 @@ var ShippingDetails = React.createClass({
                                 - ensure  that the UI re ects the latest state, based on the user interaction
                             */
                             value={this.state.fullName}
+                            /*
+                                - using a onChange handler in the state of the component
+                                - 
+                            */
                             onChange = {
                                 (event) => this.handleChange(event, 'fullName')
                             } />
@@ -165,10 +171,6 @@ var ShippingDetails = React.createClass({
                         <input className="form-control"
                             type="text"
                             placeholder="Shipping Address"
-                            /* 
-                                - assigning the value prop of the input  elds to it's corresponding state
-                                - ensure  that the UI re ects the latest state, based on the user interaction
-                            */
                             value={this.state.shippingAddress}
                             onChange = {
                                 (event) => this.handleChange(event, 'shippingAddress')
@@ -177,11 +179,7 @@ var ShippingDetails = React.createClass({
                     <div className="form-group">
                         <input className="form-control"
                             type="text"
-                            placeholder="Contact Number"
-                            /* 
-                                - assigning the value prop of the input  elds to it's corresponding state
-                                - ensure  that the UI re ects the latest state, based on the user interaction
-                            */
+                            placeholder="Contact Number" 
                             value={this.state.contactNumber}
                             onChange = {
                                 (event) => this.handleChange(event, 'contactNumber')
