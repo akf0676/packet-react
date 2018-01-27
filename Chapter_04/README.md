@@ -44,8 +44,15 @@ In order for a child to communicate with the parent using props we will need to 
 You can pass any valid expression as a prop. You can pass a function callback as prop to a child component. A child can call it to update the state of the parent.
 
 #### Error Checking
-Use state to manage the validation errors. 
+Use state (this.state.error) to manage the validation errors. 
 - Initially, it will be set to false. 
 - After a user submits a form, we will check whether the user has not selected anything and set an appropriate error message. 
 - State will be updated and it will display the error message accordingly. 
 - If the user has selected at least one book, then the error state will be set to false and the error message won't be displayed.
+
+### Shipping Details
+Building the Shipping form
+- Collect the shipping address and 
+- Name of the customer.
+- Contact Number
+- There is validation and all the  fields are required fields

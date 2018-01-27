@@ -49,6 +49,7 @@ var BookList = React.createClass({
         }
 
         this.setState({selectedBooks : selectedBooks});
+        console.log(selectedBooks)
     },
     // Handling submitting the form - React provides an onSubmit event 
     handleSubmit(event) {
@@ -92,11 +93,48 @@ var BookList = React.createClass({
     },
 });
 var ShippingDetails = React.createClass({
+    getInitialState() {
+        return (
+            { fullName: '', shippingAddress: '', contactNumber: '', error: false}
+        );
+    },
+    _renderError() {
+        if (this.state.error){
+            return(
+                <div className="alert alert-danger">
+                    {this.state.error}
+                </div>
+            );
+        }
+    },
+    _validateInput() {
+        if (this.state.fullName === '') {
+            this.setState({error: "Please enter full name"});
+          } else if (this.state.contactNumber === '') {
+            this.setState({error: "Please enter contact number"});
+          } else if (this.state.shippingAddress === '') {
+            this.setState({error: "Please enter shipping address"});
+          } else {
+            this.setState({error: false});
+            return true;
+          }        
+    },
+   
     render() {
+        var errorMessage = this._renderError();
+
         return(
-            <h1>
-                Enter your Shipping Information
-            </h1>
+            <div>
+                <h1>
+                    Enter your Shipping Information
+                </h1>
+                {errorMessage}
+                <form onSubmit={this._validateInput()}>
+
+                    <input type="submit" className="btn btn-success" />
+                </form>
+            </div>
+
         );
     }
 });
@@ -120,21 +158,20 @@ var BookStore = React.createClass({
     updateFormData(formData) {
         // ES6 method—Object.assign. Used to copy the values of all the enumerable properties from one or more source objects to a target object
         var formValues = Object.assign({}, this.state.formValues, formData);
-        var nextStep = this.currentStep + 1;
+        console.log("updateFormData this.currentStep = " + this.state.currentStep);
+        var nextStep = this.state.currentStep + 1;
         this.setState({currentStep: nextStep, formValues : formValues});
-        console.log(formValues);
+        console.log("updateFormData nextStep = " + nextStep);
     }, 
     render() {
+        console.log("BookStore Rnder State of current step = " + this.state.currentStep);
         switch (this.state.currentStep) {
             case 1:
-                return <BookList 
-                            updateFormData={this.updateFormData} />;
+                return <BookList updateFormData={this.updateFormData} />;
             case 2:
-                return <ShippingDetails 
-                            updateFormData={this.updateFormData}/>;
+                return <ShippingDetails updateFormData={this.updateFormData}/>;
             case 3: 
-                return <DeliveryDetails 
-                            updateFormData={this.updateFormData}/>;
+                return <DeliveryDetails updateFormData={this.updateFormData}/>;
         }
     }
 });
