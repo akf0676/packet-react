@@ -18,8 +18,8 @@ var BookList = React.createClass({
     _renderBook(book) {
         return (
             <div className="checkbox" key={book.id}>
-                <label htmlFor="{book.name}" >
-                    <input type="checkbox" value={book.name}
+                <label htmlFor={book.id} >
+                    <input type="checkbox" value={book.name} id={book.id}
                         onChange={this.handleSelectedBooks} /> 
                     {book.name} -- {book.author}
                 </label>
@@ -119,7 +119,25 @@ var ShippingDetails = React.createClass({
             return true;
           }        
     },
-   
+    handleSubmit(event) {
+        event.preventDefault();
+        // Grab all form Data
+        var formData = {
+            fullName: this.state.fullName,
+            contactNumber: this.state.contactNumber,
+            shippingAddress: this.state.shippingAddress
+        }
+        if (this._validateInput()) {
+            this.props.updateFormData(formData);
+        }
+        console.log("Shipping Details Submitted");
+    },
+    handleChange(event, attribute) {
+        var newState = this.state;
+        newState[attribute] = event.target.value;
+        this.setState(newState);
+        console.log(this.state);
+    },
     render() {
         var errorMessage = this._renderError();
 
@@ -129,9 +147,41 @@ var ShippingDetails = React.createClass({
                     Enter your Shipping Information
                 </h1>
                 {errorMessage}
-                <form onSubmit={this._validateInput()}>
-
-                    <input type="submit" className="btn btn-success" />
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <input className="form-control"
+                            type="text"
+                            placeholder="Full Name"
+                            value={this.state.fullName}
+                            onChange = {
+                                (event) => this.handleChange(event, 'fullName')
+                            } />
+                    </div>
+                    <div className="form-group">
+                        <input className="form-control"
+                            type="text"
+                            placeholder="Shipping Address"
+                            value={this.state.shippingAddress}
+                            onChange = {
+                                (event) => this.handleChange(event, 'shippingAddress')
+                            } />
+                    </div>
+                    <div className="form-group">
+                        <input className="form-control"
+                            type="text"
+                            placeholder="Contact Number"
+                            value={this.state.contactNumber}
+                            onChange = {
+                                (event) => this.handleChange(event, 'contactNumber')
+                            } />
+                    </div>
+                    <div className="form-group">
+                        <button type="submit"
+                            ref="submit"
+                            className="btn btn-success">
+                            Submit
+                        </button>
+                    </div>
                 </form>
             </div>
 
