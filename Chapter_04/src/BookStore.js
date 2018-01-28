@@ -199,11 +199,54 @@ var ShippingDetails = React.createClass({
     }
 });
 var DeliveryDetails = React.createClass({
+    getInitialState() {
+        return (
+            { deliveryOption: "Primary"}
+        );
+    },
+    handleSubmit(event) {
+        event.preventDefault();
+        // Update props to parent COmponent
+        this.props.updateFormData(this.state);
+        console.log
+        console.log("Submit delivery options");
+    },
+    handleChange(event) {
+        this.setState({deliveryOption: event.target.value});
+        console.log(this.state);
+    },
     render() {
         return(
-            <h1>
-                Choose your delivery options here
-            </h1>
+            <div>
+                <h1>
+                    Choose your delivery options here
+                </h1>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input type="radio" className="form-check-inpt"
+                                checked={this.state.deliveryOption === "Primary"}
+                                value="Primary"
+                                onChange={this.handleChange}
+                                />
+                                Prime Delivery - Next Day
+                        </label>
+                    </div>
+                    <div className="form-check">
+                        <input type="radio"  className="form-check-inpt"
+                                checked={this.state.deliveryOption === "Standard"}
+                                value="Standard"
+                                onChange={this.handleChange}
+                                />
+                                Standard
+                    </div>
+                    <button type="submit"
+                        ref="submit"
+                        className="btn btn-success">
+                        Submit THis Now!!!
+                    </button>
+                </form>
+            </div>
         );
     }
 });

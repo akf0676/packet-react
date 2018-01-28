@@ -56,3 +56,10 @@ Building the Shipping form
 - Name of the customer.
 - Contact Number
 - There is validation and all the  fields are required fields
+
+### Delivery Details
+Next step is about providing various delivery options
+- the user can choose between Primary delivery, meaning a next-day delivery, 
+- Normal delivery, meaning 3 - 4 days delivery. 
+- By default, the Primary option must be selected. 
+- A user can choose the Normal delivery option too.
