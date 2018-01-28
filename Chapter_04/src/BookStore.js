@@ -229,7 +229,7 @@ var DeliveryDetails = React.createClass({
                                 value="Primary"
                                 onChange={this.handleChange}
                                 />
-                                Prime Delivery - Next Day
+                                Prime Delivery - 2 - 3 Days
                         </label>
                     </div>
                     <div className="form-check">
@@ -238,12 +238,12 @@ var DeliveryDetails = React.createClass({
                                 value="Standard"
                                 onChange={this.handleChange}
                                 />
-                                Standard
+                                Standard - 5 - 7 Days
                     </div>
                     <button type="submit"
                         ref="submit"
                         className="btn btn-success">
-                        Submit THis Now!!!
+                        Confirm Delivery Options
                     </button>
                 </form>
             </div>
@@ -276,8 +276,9 @@ var BookStore = React.createClass({
             case 3: 
                 return <DeliveryDetails updateFormData={this.updateFormData}/>;
             case 4:
-                return <ConfirmationDetails data={this.state.formValues} />
-            case 4:
+                return <ConfirmationDetails 
+                            data={this.state.formValues} updateFormData={this.updateFormData} />
+            case 5:
                 return <OrderCompletion data={this.state.formValues} />
             default:
                 return <BookList updateFormData={this.updateFormData} />;
@@ -288,13 +289,16 @@ var BookStore = React.createClass({
 var ConfirmationDetails = React.createClass ({
     handleSubmit(event) {
         event.preventDefault();
+        //need to update ParentComponent
+        this.props.updateFormData(this.props.data);
+        
         console.log("Confirmation Details Submission complete");
     },
     render() {
         return( 
             <div>
                 <h1>Please confirm you details are correct</h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div>
                         <strong>Full Name</strong> : { this.props.data.fullName }
                     </div>
@@ -311,7 +315,7 @@ var ConfirmationDetails = React.createClass ({
                         <button type="submit"
                             ref="submit"
                             className="btn btn-success">
-                            Submit
+                            Confirm Details are all correct
                         </button>
                     </div>
                 </form>
@@ -322,12 +326,20 @@ var ConfirmationDetails = React.createClass ({
 
 var OrderCompletion = React.createClass({
     render() {
+        console.log(this.props.data)
+        var oc = this.props.data
+        var numberOfDays = "3 to 4 days";
+        if(oc.deliveryOption === "Standard") {
+            numberOfDays = "5 - 7 days";
+        }
         return (
             <div>
-                <h1> Thanks for Placing your Order</h1>
-                <p>Your order of {this.data.selectedBooks.join(", ")} will be with you soon</p>
+                <h1> Thanks {oc.fullName} for Placing your Order</h1>
+                <p>Your order of {oc.selectedBooks.join(", ")} will be sent to you at <br />
+                {oc.shippingAddress} with you in {numberOfDays}</p>
             </div>
         );
     }
 });
+
 module.exports = BookStore;
