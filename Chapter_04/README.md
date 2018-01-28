@@ -28,7 +28,7 @@ Within the Chapter_04 directory run:-
 * Navigate to http://localhost:9000
 
 ## Bookstore
-### Task 1 - Getting Started
+### Task 1 - Getting Started <BookList> & <BookStore>
 Build a form wizard, modeling all the steps that the user will take while using the online bookstore.
 - We will start with a form, where the user selects the book that they want to buy
 - In the next step, the user will enter the information related to the billing and shipping address
@@ -50,16 +50,22 @@ Use state (this.state.error) to manage the validation errors.
 - State will be updated and it will display the error message accordingly. 
 - If the user has selected at least one book, then the error state will be set to false and the error message won't be displayed.
 
-### Shipping Details
+### Shipping Details <ShippingDetails>
 Building the Shipping form
 - Collect the shipping address and 
 - Name of the customer.
 - Contact Number
 - There is validation and all the  fields are required fields
 
-### Delivery Details
+### Delivery Details <DeliveryDetails>
 Next step is about providing various delivery options
 - the user can choose between Primary delivery, meaning a next-day delivery, 
 - Normal delivery, meaning 3 - 4 days delivery. 
 - By default, the Primary option must be selected. 
 - A user can choose the Normal delivery option too.
+
+### Confirmation Step <ConfirmationDetails>
+Lets update with a confirmation page showing the details.
+
+### Thank you for Ordering - <Success>
+Finally you will need to set-up a Thank you 

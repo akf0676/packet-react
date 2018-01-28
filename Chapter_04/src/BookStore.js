@@ -275,8 +275,59 @@ var BookStore = React.createClass({
                 return <ShippingDetails updateFormData={this.updateFormData}/>;
             case 3: 
                 return <DeliveryDetails updateFormData={this.updateFormData}/>;
+            case 4:
+                return <ConfirmationDetails data={this.state.formValues} />
+            case 4:
+                return <OrderCompletion data={this.state.formValues} />
+            default:
+                return <BookList updateFormData={this.updateFormData} />;
         }
     }
 });
 
+var ConfirmationDetails = React.createClass ({
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log("Confirmation Details Submission complete");
+    },
+    render() {
+        return( 
+            <div>
+                <h1>Please confirm you details are correct</h1>
+                <form>
+                    <div>
+                        <strong>Full Name</strong> : { this.props.data.fullName }
+                    </div>
+                    <div>
+                        <strong>Delivery Address</strong> : { this.props.data.shippingAddress }
+                    </div>
+                    <div>
+                        <strong>Delivery Options</strong> : { this.props.data.deliveryOption }
+                    </div>
+                    <div>
+                        <strong>Your Book Selection</strong> : { this.props.data.selectedBooks.join(", ") }
+                    </div>
+                    <div className="form-group">
+                        <button type="submit"
+                            ref="submit"
+                            className="btn btn-success">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+});
+
+var OrderCompletion = React.createClass({
+    render() {
+        return (
+            <div>
+                <h1> Thanks for Placing your Order</h1>
+                <p>Your order of {this.data.selectedBooks.join(", ")} will be with you soon</p>
+            </div>
+        );
+    }
+});
 module.exports = BookStore;
