@@ -1,5 +1,6 @@
 # Learning React - As Based on ReactJS by Example - Building Modern Web Applications with React
-### by Vipul A M &  Prathamesh Sonpatki
+
+## by Vipul A M &  Prathamesh Sonpatki
 
 This is me Learning and storing the information via branches per chapter with the Master Branch holding all chapter
 Each Chapter Branch - should include a README.md that pertain to the Chapter Title / Purpose and Sumamary
