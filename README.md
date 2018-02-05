@@ -64,3 +64,12 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Acknowledgments
 
 * PACKT open source
+
+## VS Code Installation
+
+* DavidAnson.vscode-markdownlint
+* PeterJausovec.vscode-docker
+* eamodio.gitlens
+* mdickin.markdown-shortcuts
+* ms-vscode.csharp
+* sidthesloth.html5-boilerplate
