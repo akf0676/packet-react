@@ -9,9 +9,10 @@ Taking a look at being able to abstract and reuse logic across our components an
 * Refs
 
 ## Bookstore Enhancements
-
+Will look to seperate code, and break up and have inclusions :- learnings are all taking from the packet react download.
 Looking to enhace the previous bookstore app in Chapter 04.
 
 * Add a timeout to the cart
 * Show the timer to user
 * Complete order within 15 minutes
+
