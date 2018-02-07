@@ -1,5 +1,6 @@
 import React from 'react';
-
+import SetIntervalMixin from './mixins/set_interval_mixin';
+import CartTimeoutMixin from './mixins/cart_timeout';
 
 var DeliveryDetails = React.createClass({
     getInitialState() {
@@ -11,7 +12,7 @@ var DeliveryDetails = React.createClass({
 
 	},
 	// First place where we need to use the timeout
-	//mixins: [setIntervalMixin, CartTimeoutMixin],
+	mixins: [SetIntervalMixin, CartTimeoutMixin],
 
     handleSubmit(event) {
         event.preventDefault();
