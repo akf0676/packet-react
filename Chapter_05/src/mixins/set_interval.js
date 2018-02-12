@@ -20,7 +20,7 @@ var SetIntervalMixin = {
 		 When we start using, they are called just like other methonds in our component life cycle
 		 Both these and the existing methods will be called
 	*/
-	componetWillUnmount: function() {
+	componentWillUnmount: function() {
 		this.intervals.map(clearInterval);
 	}
 };

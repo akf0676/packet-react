@@ -1,9 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SetIntervalMixin from './mixins/set_interval';
 import CartTimeoutMixin from './mixins/cart_timeout';
 
 var DeliveryDetails = React.createClass({
-    getInitialState() {
+	propTypes: {
+		alertCartTimeout: React.PropTypes.func.isRequired,
+		updateCartTimeout: React.PropTypes.func.isRequired,
+		cartTimeout: React.PropTypes.number.isRequired
+	},
+	// First place where we need to use the timeout
+	mixins: [SetIntervalMixin, CartTimeoutMixin],
+
+	getInitialState() {
         return (
 			{  deliveryOption: "Primary",
 				cartTimeout: this.props.cartTimeout
@@ -11,8 +20,6 @@ var DeliveryDetails = React.createClass({
 		);
 
 	},
-	// First place where we need to use the timeout
-	mixins: [SetIntervalMixin, CartTimeoutMixin],
 
     handleSubmit(event) {
         event.preventDefault();
