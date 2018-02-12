@@ -1,5 +1,5 @@
 import React from 'react';
-import SetIntervalMixin from './mixins/set_interval_mixin';
+import SetIntervalMixin from './mixins/set_interval';
 import CartTimeoutMixin from './mixins/cart_timeout';
 
 var DeliveryDetails = React.createClass({

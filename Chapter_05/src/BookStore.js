@@ -11,7 +11,7 @@ var BookStore = React.createClass({
         return ({
             currentStep: 1,
 			formValues : {},
-			cartTimeout: 60 * 15
+			cartTimeout: 60
         });
 	},
 	updateCartTimeout(timeout){
@@ -33,18 +33,22 @@ var BookStore = React.createClass({
             case 2:
                 return <ShippingDetails updateFormData={this.updateFormData}
 										cartTimeout={this.state.cartTimeout}
-										updateCartTimeout={this.updateCartTimeout} />;
+										updateCartTimeout={this.updateCartTimeout}
+										alertCartTimeout={this.alertCartTimeout} />;
             case 3:
                 return <DeliveryDetails updateFormData={this.updateFormData}
 										cartTimeout={this.state.cartTimeout}
-										updateCartTimeout={this.updateCartTimeout} />;
+										updateCartTimeout={this.updateCartTimeout}
+										alertCartTimeout={this.alertCartTimeout} />;
             case 4:
                 return <ConfirmationDetails data={this.state.formValues}
 											updateFormData={this.updateFormData}
-											cartTimeout={this.state.cartTimeout} />
+											cartTimeout={this.state.cartTimeout}
+											alertCartTimeout={this.alertCartTimeout} />
             case 5:
 				return <OrderCompletion data={this.state.formValues}
-										cartTimeout={this.state.cartTimeout} />
+										cartTimeout={this.state.cartTimeout}
+										alertCartTimeout={this.alertCartTimeout} />
 			case 10:
 				// Handele the case of cart timeout
 				return <div><h2>Sorry, your cart has expired</h2><p>Please try again</p></div>;

@@ -1,8 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import SetIntervalMixin from './mixins/set_interval';
+import CartTimeoutMixin from './mixins/cart_timeout';
+
 var ShippingDetails = React.createClass({
-    getInitialState() {
+	propTypes: {
+		alertCartTimeout:React.PropTypes.func.isRequired,
+		updateCartTimeout: React.PropTypes.func.isRequired,
+		cartTimeout: React.PropTypes.number.isRequired
+	},
+	mixins: [SetIntervalMixin, CartTimeoutMixin],
+	getInitialState() {
         return (
-            { fullName: '', shippingAddress: '', contactNumber: '', error: false}
+			{  	fullName: '',
+				shippingAddress: '',
+				contactNumber: '',
+				error: false,
+				cartTimeout: this.props.cartTimeout
+			}
         );
     },
     _renderError() {
@@ -48,13 +63,16 @@ var ShippingDetails = React.createClass({
         console.log(this.state);
     },
     render() {
-        var errorMessage = this._renderError();
+		var errorMessage = this._renderError();
+		var minutes = Math.floor(this.state.cartTimeout / 60);
+       	var seconds = this.state.cartTimeout - minutes * 60;
 
         return(
             <div>
-                <h1>
+                <h1>Shipping Details</h1>
+				<h2>
                     Enter your Shipping Information
-                </h1>
+                </h2>
                 {errorMessage}
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
@@ -100,6 +118,10 @@ var ShippingDetails = React.createClass({
                         </button>
                     </div>
                 </form>
+				<div className='well'>
+					<span className="glyphicon glyphicon-time" aria-hidden="true"></span>
+					You have {minutes} Minutes, {seconds} Seconds, before confirming order
+				</div>
             </div>
 
         );

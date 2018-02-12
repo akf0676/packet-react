@@ -73,7 +73,7 @@ var BookList = React.createClass({
         return(
             <div>
                 <h1>
-                    Choose from a wide variety of books availble in our Store.
+                   Book Listing -  Choose from a wide variety of books availble in our Store.
                 </h1>
                 {errorMessage}
                 <form onSubmit={this.handleSubmit}>

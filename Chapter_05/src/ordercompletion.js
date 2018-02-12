@@ -10,7 +10,8 @@ var OrderCompletion = React.createClass({
         }
         return (
             <div>
-                <h1> Thanks {oc.fullName} for Placing your Order</h1>
+				<h1>Order Completion</h1>
+                <h2> Thanks {oc.fullName} for Placing your Order</h2>
                 <p>Your order of {oc.selectedBooks.join(", ")} will be sent to you at <br />
                 {oc.shippingAddress} with you in {numberOfDays}</p>
             </div>

@@ -6,7 +6,7 @@ var SetIntervalMixin = {
 		Adding a way to track our interval handler.
 		Intializing an array to hold instances to intervals that we will be creating
 	*/
-	componetWillMount: function() {
+	componentWillMount: function() {
 		this.intervals =[];
 	},
 

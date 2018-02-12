@@ -11,7 +11,8 @@ var ConfirmationDetails = React.createClass ({
     render() {
         return(
             <div>
-                <h1>Please confirm you details are correct</h1>
+                <h1>Confirmation</h1>
+				<h2>Please confirm you details are correct</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <strong>Full Name</strong> : { this.props.data.fullName }
