@@ -20,7 +20,10 @@ var DeliveryDetails = React.createClass({
 		);
 
 	},
-
+	// Missed this function so that delivery Details displays the current state of the timeout passed from previous page
+	componentWillReceiveProps(newProps){
+		this.setState({cartTimeout: newProps.cartTimeout});
+	},
     handleSubmit(event) {
         event.preventDefault();
         // Update props to parent COmponent

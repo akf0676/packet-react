@@ -1,6 +1,6 @@
 import React from 'react';
 
-var ConfirmationDetails = React.createClass ({
+var Confirmation = React.createClass ({
     handleSubmit(event) {
         event.preventDefault();
         //need to update ParentComponent
@@ -39,4 +39,4 @@ var ConfirmationDetails = React.createClass ({
     }
 });
 
-module.exports = ConfirmationDetails;
+module.exports = Confirmation;

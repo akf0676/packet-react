@@ -2,7 +2,7 @@ import React from 'react';
 import BookList from './booklist';
 import ShippingDetails from './shippingdetails';
 import DeliveryDetails from './deliverydetails';
-import ConfirmationDetails from './confirmation';
+import Confirmation from './confirmation';
 import OrderCompletion from './ordercompletion';
 
 
@@ -11,7 +11,7 @@ var BookStore = React.createClass({
         return ({
             currentStep: 1,
 			formValues : {},
-			cartTimeout: 60
+			cartTimeout: 60 * 10
         });
 	},
 	updateCartTimeout(timeout){
@@ -41,7 +41,7 @@ var BookStore = React.createClass({
 										updateCartTimeout={this.updateCartTimeout}
 										alertCartTimeout={this.alertCartTimeout} />;
             case 4:
-                return <ConfirmationDetails data={this.state.formValues}
+                return <Confirmation data={this.state.formValues}
 											updateFormData={this.updateFormData}
 											cartTimeout={this.state.cartTimeout}
 											alertCartTimeout={this.alertCartTimeout} />
