@@ -16,3 +16,10 @@ Looking to enhace the previous bookstore app in Chapter 04.
 * Show the timer to user
 * Complete order within 15 minutes
 
+## Adding a Modal
+Once we time out, it will be nice to use Bootstrap's Modal function, and redirect to the begining of the flow.
+
+* Create a Modal React Component based on Bootstrap Modal
+* Invoke display from alertCartTimout
+* Display the first page and reset data
+
