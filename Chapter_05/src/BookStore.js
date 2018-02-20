@@ -1,17 +1,18 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import BookList from './booklist';
 import ShippingDetails from './shippingdetails';
 import DeliveryDetails from './deliverydetails';
 import Confirmation from './confirmation';
 import OrderCompletion from './ordercompletion';
-
+import ModalAlertTimeout from './ModalAlertTimeout';
 
 var BookStore = React.createClass({
     getInitialState() {
         return ({
             currentStep: 1,
 			formValues : {},
-			cartTimeout: 60 * 10
+			cartTimeout: 5
         });
 	},
 	updateCartTimeout(timeout){
@@ -24,7 +25,9 @@ var BookStore = React.createClass({
         this.setState({currentStep: nextStep, formValues : formValues});
 	},
 	alertCartTimeout() {
-		this.setState({currentStep: 10});
+		console.log("BookStrore alertCartTimeout");
+		ReactDOM.render(<ModalAlertTimeout />, document.getElementById('modalAlertTimeout'))
+		this.setState({currentStep: 1, formValues:{}, cartTimeout: 1});
 	},
     render() {
         switch (this.state.currentStep) {
