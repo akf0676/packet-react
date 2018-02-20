@@ -1,5 +1,6 @@
 # Learning React - As Based on ReactJS by Example - Building Modern Web Applications with React
-### by Vipul A M &  Prathamesh Sonpatki
+
+## by Vipul A M &  Prathamesh Sonpatki
 
 This is me Learning and storing the information via branches per chapter with the Master Branch holding all chapter
 Each Chapter Branch - should include a README.md that pertain to the Chapter Title / Purpose and Sumamary
@@ -63,3 +64,12 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Acknowledgments
 
 * PACKT open source
+
+## VS Code Installation
+
+* DavidAnson.vscode-markdownlint
+* PeterJausovec.vscode-docker
+* eamodio.gitlens
+* mdickin.markdown-shortcuts
+* ms-vscode.csharp
+* sidthesloth.html5-boilerplate
